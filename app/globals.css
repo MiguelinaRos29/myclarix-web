@@ -14,3 +14,14 @@ h1,h2,h3{
 body{
   font-family: var(--font-sans);
 }
+
+/* ✅ Links elegantes (sin azul por defecto) */
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ✅ Selección suave */
+::selection{
+  background: rgba(31, 78, 95, 0.18);
+}

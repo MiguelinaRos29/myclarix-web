@@ -8,7 +8,17 @@ const PrimaryButton = ({ children }: { children: React.ReactNode }) => (
   <a
     href="#demo"
     className="inline-flex items-center justify-center rounded-2xl bg-accent px-6 py-3 text-white font-medium
-               transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent/40"
+               shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent/40"
+  >
+    {children}
+  </a>
+);
+
+const SubtleButton = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a
+    href={href}
+    className="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-accent
+               border border-accent/20 bg-transparent hover:bg-accent/5 transition"
   >
     {children}
   </a>
@@ -23,23 +33,42 @@ export default function Home() {
           <div className="text-xl tracking-tight">
             <span className="font-semibold">My</span>Clarix
           </div>
-          <div className="flex items-center gap-3">
-            <a href="#producto" className="text-sm text-muted hover:text-charcoal">Producto</a>
-            <a href="#diferencias" className="text-sm text-muted hover:text-charcoal">Diferencias</a>
-            <a href="#demo" className="text-sm text-muted hover:text-charcoal">Demo</a>
+
+          {/* ✅ Links premium (sin azul, con hover suave) */}
+          <div className="hidden md:flex items-center gap-5">
+            <a href="#producto" className="text-sm text-muted hover:text-charcoal transition">
+              Producto
+            </a>
+            <a href="#diferencias" className="text-sm text-muted hover:text-charcoal transition">
+              Diferencias
+            </a>
+            <a href="#demo" className="text-sm text-muted hover:text-charcoal transition">
+              Demo
+            </a>
+
             <a
               href="#demo"
-              className="rounded-2xl border border-charcoal/15 bg-white/40 px-4 py-2 text-sm hover:bg-white/70"
+              className="rounded-2xl border border-charcoal/15 bg-white/40 px-4 py-2 text-sm
+                         hover:bg-white/70 transition"
             >
               Solicitar demo
             </a>
           </div>
+
+          {/* ✅ Mini botón móvil */}
+          <a
+            href="#demo"
+            className="md:hidden rounded-2xl border border-charcoal/15 bg-white/40 px-4 py-2 text-sm
+                       hover:bg-white/70 transition"
+          >
+            Demo
+          </a>
         </nav>
       </header>
 
       {/* HERO */}
       <section className="mx-auto max-w-6xl px-6 pb-14 pt-6">
-        <div className="rounded-[28px] bg-white/45 border border-charcoal/10 p-8 md:p-14 shadow-sm">
+        <div className="rounded-[28px] bg-white/55 border border-charcoal/10 p-8 md:p-14 shadow-sm">
           <p className="text-sm uppercase tracking-[0.18em] text-muted">
             Asistente premium para negocios con clientes reales
           </p>
@@ -55,13 +84,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <PrimaryButton>Solicitar demo personalizada</PrimaryButton>
-            <a
-              href="#producto"
-              className="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-accent
-                         border border-accent/25 bg-transparent hover:bg-accent/5"
-            >
-              Ver cómo funciona
-            </a>
+            <SubtleButton href="#producto">Ver cómo funciona</SubtleButton>
           </div>
         </div>
       </section>
@@ -77,7 +100,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-[24px] bg-pearl/35 border border-charcoal/10 p-7">
+          <div className="rounded-[24px] bg-pearl/40 border border-charcoal/10 p-7 shadow-sm">
             <ul className="space-y-3 text-charcoal">
               {[
                 "Mensajes sin responder a tiempo",
@@ -86,7 +109,7 @@ export default function Home() {
                 "Demasiado tiempo en respuestas repetitivas",
               ].map((t) => (
                 <li key={t} className="flex gap-3">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
                   <span className="leading-relaxed">{t}</span>
                 </li>
               ))}
@@ -97,9 +120,7 @@ export default function Home() {
 
       {/* QUÉ HACE */}
       <section className="mx-auto max-w-6xl px-6 py-14">
-        <div className="flex items-end justify-between gap-6">
-          <SectionTitle>Qué hace MyClarix por tu negocio</SectionTitle>
-        </div>
+        <SectionTitle>Qué hace MyClarix por tu negocio</SectionTitle>
 
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
@@ -110,7 +131,11 @@ export default function Home() {
             ["Control total", "Reglas claras: sin cambios peligrosos, sin letra pequeña."],
             ["Orden y foco", "Más tiempo para ti, más oportunidades reales."],
           ].map(([title, desc]) => (
-            <div key={title} className="rounded-[24px] bg-white/45 border border-charcoal/10 p-7 shadow-sm">
+            <div
+              key={title}
+              className="rounded-[24px] bg-white/55 border border-charcoal/10 p-7 shadow-sm
+                         hover:shadow-md transition"
+            >
               <h3 className="text-xl tracking-tight">{title}</h3>
               <p className="mt-3 text-muted leading-relaxed">{desc}</p>
             </div>
@@ -120,7 +145,7 @@ export default function Home() {
 
       {/* PARA QUIÉN */}
       <section className="mx-auto max-w-6xl px-6 py-14">
-        <div className="rounded-[28px] bg-pearl/35 border border-charcoal/10 p-8 md:p-12">
+        <div className="rounded-[28px] bg-pearl/40 border border-charcoal/10 p-8 md:p-12 shadow-sm">
           <SectionTitle>Diseñado para negocios que cuidan su trato con el cliente</SectionTitle>
           <p className="mt-4 text-muted leading-relaxed max-w-3xl">
             Ideal para academias, consultores, profesionales independientes y negocios que trabajan con citas.
@@ -129,7 +154,10 @@ export default function Home() {
 
           <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {["Academias", "Consultores", "Profesionales", "Negocios con citas"].map((x) => (
-              <div key={x} className="rounded-2xl bg-white/55 border border-charcoal/10 px-4 py-3 text-sm">
+              <div
+                key={x}
+                className="rounded-2xl bg-white/60 border border-charcoal/10 px-4 py-3 text-sm shadow-sm"
+              >
                 {x}
               </div>
             ))}
@@ -146,7 +174,11 @@ export default function Home() {
             ["Control total", "Tú defines qué puede y qué no puede hacer el sistema."],
             ["Citas sin confusión", "Flujo natural: fecha/hora → motivo → confirmación."],
           ].map(([title, desc]) => (
-            <div key={title} className="rounded-[24px] bg-white/45 border border-charcoal/10 p-7 shadow-sm">
+            <div
+              key={title}
+              className="rounded-[24px] bg-white/55 border border-charcoal/10 p-7 shadow-sm
+                         hover:shadow-md transition"
+            >
               <h3 className="text-xl tracking-tight">{title}</h3>
               <p className="mt-3 text-muted leading-relaxed">{desc}</p>
             </div>
@@ -156,7 +188,7 @@ export default function Home() {
 
       {/* CTA FINAL */}
       <section id="demo" className="mx-auto max-w-6xl px-6 py-16">
-        <div className="rounded-[28px] bg-accent text-white p-8 md:p-12">
+        <div className="rounded-[28px] bg-accent text-white p-8 md:p-12 shadow-sm">
           <h2 className="text-3xl md:text-4xl leading-tight tracking-tight">
             ¿Quieres ver MyClarix funcionando en tu negocio?
           </h2>
@@ -168,7 +200,7 @@ export default function Home() {
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <a
               className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-accent font-medium
-                         transition hover:opacity-90"
+                         transition hover:opacity-90 shadow-sm"
               href="mailto:demo@myclarix.com?subject=Solicitud%20de%20demo%20MyClarix"
             >
               Solicitar demo por email
@@ -176,7 +208,7 @@ export default function Home() {
 
             <a
               className="inline-flex items-center justify-center rounded-2xl border border-white/40 px-6 py-3 text-white
-                         hover:bg-white/10"
+                         hover:bg-white/10 transition"
               href="#"
               title="Luego lo conectamos a WhatsApp"
             >
