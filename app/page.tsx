@@ -8,17 +8,23 @@ const PrimaryButton = ({ children }: { children: React.ReactNode }) => (
   <a
     href="#demo"
     className="inline-flex items-center justify-center rounded-2xl bg-accent px-6 py-3 text-white font-medium
-               shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent/40"
+               shadow-sm transition hover:bg-accentDark focus:outline-none focus:ring-2 focus:ring-accent/40"
   >
     {children}
   </a>
 );
 
-const SubtleButton = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const SubtleButton = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => (
   <a
     href={href}
     className="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-accent
-               border border-accent/20 bg-transparent hover:bg-accent/5 transition"
+               border border-accent/25 bg-transparent hover:bg-accentSoft transition"
   >
     {children}
   </a>
@@ -34,15 +40,23 @@ export default function Home() {
             <span className="font-semibold">My</span>Clarix
           </div>
 
-          {/* ✅ Links premium (sin azul, con hover suave) */}
           <div className="hidden md:flex items-center gap-5">
-            <a href="#producto" className="text-sm text-muted hover:text-charcoal transition">
+            <a
+              href="#producto"
+              className="text-sm text-muted hover:text-charcoal transition"
+            >
               Producto
             </a>
-            <a href="#diferencias" className="text-sm text-muted hover:text-charcoal transition">
+            <a
+              href="#diferencias"
+              className="text-sm text-muted hover:text-charcoal transition"
+            >
               Diferencias
             </a>
-            <a href="#demo" className="text-sm text-muted hover:text-charcoal transition">
+            <a
+              href="#demo"
+              className="text-sm text-muted hover:text-charcoal transition"
+            >
               Demo
             </a>
 
@@ -55,7 +69,6 @@ export default function Home() {
             </a>
           </div>
 
-          {/* ✅ Mini botón móvil */}
           <a
             href="#demo"
             className="md:hidden rounded-2xl border border-charcoal/15 bg-white/40 px-4 py-2 text-sm
@@ -73,8 +86,10 @@ export default function Home() {
             Asistente premium para negocios con clientes reales
           </p>
 
+          {/* ✅ más vida: una palabra en acento */}
           <h1 className="mt-4 text-4xl md:text-6xl leading-tight tracking-tight">
-            El asistente inteligente que convierte conversaciones en citas reales
+            El asistente inteligente que convierte{" "}
+            <span className="text-accent">conversaciones</span> en citas reales
           </h1>
 
           <p className="mt-5 max-w-2xl text-base md:text-lg text-muted leading-relaxed">
@@ -93,10 +108,12 @@ export default function Home() {
       <section id="producto" className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <SectionTitle>Tus clientes escriben. El problema es lo que pasa después.</SectionTitle>
+            <SectionTitle>
+              Tus clientes escriben. El problema es lo que pasa después.
+            </SectionTitle>
             <p className="mt-4 text-muted leading-relaxed">
-              Mensajes fuera de horario, conversaciones que no se cierran y citas mal coordinadas.
-              MyClarix pone orden sin romper la cercanía.
+              Mensajes fuera de horario, conversaciones que no se cierran y citas mal
+              coordinadas. MyClarix pone orden sin romper la cercanía.
             </p>
           </div>
 
@@ -146,7 +163,10 @@ export default function Home() {
       {/* PARA QUIÉN */}
       <section className="mx-auto max-w-6xl px-6 py-14">
         <div className="rounded-[28px] bg-pearl/40 border border-charcoal/10 p-8 md:p-12 shadow-sm">
-          <SectionTitle>Diseñado para negocios que cuidan su trato con el cliente</SectionTitle>
+          <SectionTitle>
+            Diseñado para negocios que cuidan su trato con el cliente
+          </SectionTitle>
+
           <p className="mt-4 text-muted leading-relaxed max-w-3xl">
             Ideal para academias, consultores, profesionales independientes y negocios que trabajan con citas.
             Si hablas con clientes, MyClarix trabaja contigo.
@@ -168,6 +188,7 @@ export default function Home() {
       {/* DIFERENCIADORES */}
       <section id="diferencias" className="mx-auto max-w-6xl px-6 py-14">
         <SectionTitle>No es otro asistente más</SectionTitle>
+
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
             ["Ventas suaves", "Solo aparece cuando hay interés real. Sin presionar."],
@@ -192,7 +213,8 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl leading-tight tracking-tight">
             ¿Quieres ver MyClarix funcionando en tu negocio?
           </h2>
-          <p className="mt-4 text-white/85 leading-relaxed max-w-2xl">
+
+          <p className="mt-4 text-white/90 leading-relaxed max-w-2xl">
             Solicita una demo personalizada y descubre cómo mejorar tu atención, tus citas y tu proceso comercial
             sin cambiar tu forma de trabajar.
           </p>
@@ -216,7 +238,7 @@ export default function Home() {
             </a>
           </div>
 
-          <p className="mt-4 text-xs text-white/70">
+          <p className="mt-4 text-xs text-white/80">
             *El botón de WhatsApp lo activamos cuando integremos el canal.
           </p>
         </div>
