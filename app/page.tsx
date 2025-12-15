@@ -41,22 +41,13 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex items-center gap-5">
-            <a
-              href="#producto"
-              className="text-sm text-muted hover:text-charcoal transition"
-            >
+            <a href="#producto" className="text-sm text-muted hover:text-charcoal transition">
               Producto
             </a>
-            <a
-              href="#diferencias"
-              className="text-sm text-muted hover:text-charcoal transition"
-            >
+            <a href="#diferencias" className="text-sm text-muted hover:text-charcoal transition">
               Diferencias
             </a>
-            <a
-              href="#demo"
-              className="text-sm text-muted hover:text-charcoal transition"
-            >
+            <a href="#demo" className="text-sm text-muted hover:text-charcoal transition">
               Demo
             </a>
 
@@ -86,7 +77,6 @@ export default function Home() {
             Asistente premium para negocios con clientes reales
           </p>
 
-          {/* ✅ más vida: una palabra en acento */}
           <h1 className="mt-4 text-4xl md:text-6xl leading-tight tracking-tight">
             El asistente inteligente que convierte{" "}
             <span className="text-accent">conversaciones</span> en citas reales

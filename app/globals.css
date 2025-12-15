@@ -1,5 +1,18 @@
-/* Tailwind v4 – forma correcta */
 @import "tailwindcss";
+
+/* ✅ Tailwind v4: define tokens de color para usar bg-accent, text-muted, bg-pearl, etc. */
+@theme {
+  --color-ivory: #F6F3EE;
+  --color-pearl: #EDEBE6;
+  --color-charcoal: #2B2B2B;
+  --color-muted: #6B6E73;
+
+  --color-accent: #1F4E5F;
+  --color-accentDark: #163C4A;
+
+  /* fondo suave */
+  --color-accentSoft: rgba(31, 78, 95, 0.12);
+}
 
 /* Tipografías base */
 :root {
@@ -9,8 +22,8 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #F6F3EE; /* marfil */
-  color: #2B2B2B; /* charcoal */
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
 }
 
 h1, h2, h3 {
