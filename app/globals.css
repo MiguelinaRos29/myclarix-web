@@ -25,3 +25,9 @@ a{
 ::selection{
   background: rgba(31, 78, 95, 0.18);
 }
+
+/* 🔥 TEST VISUAL FORZADO */
+body {
+  background-color: red !important;
+  color: white !important;
+}
