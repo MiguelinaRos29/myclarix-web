@@ -13,7 +13,10 @@ h1,h2,h3{
 
 body{
   font-family: var(--font-sans);
+  background-color: #F6F3EE; /* marfil */
+  color: #2B2B2B; /* charcoal */
 }
+
 
 /* Links elegantes */
 a{
@@ -26,8 +29,4 @@ a{
   background: rgba(31, 78, 95, 0.18);
 }
 
-/* 🔥 TEST VISUAL FORZADO */
-body {
-  background-color: red !important;
-  color: white !important;
-}
+
