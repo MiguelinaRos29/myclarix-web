@@ -1,10 +1,19 @@
 import "./globals.css";
+import type { Metadata } from "next";
 import { DM_Serif_Display, Inter } from "next/font/google";
 
-const serif = DM_Serif_Display({ subsets: ["latin"], weight: "400", variable: "--font-serif" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const serif = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-serif",
+});
 
-export const metadata = {
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+export const metadata: Metadata = {
   title: "MyClarix — Conversaciones que se convierten en citas",
   description:
     "Asistente inteligente premium que organiza citas, atiende clientes y acompaña ventas suaves sin presión.",
@@ -19,4 +28,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
