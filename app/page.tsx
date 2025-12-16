@@ -11,7 +11,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 // ===============================
 
 const PrimaryButton = ({
-  href = "#demo",
+  href = "#contacto",
   children,
 }: {
   href?: string;
@@ -74,16 +74,16 @@ export default function Home() {
             <a href="#diferencias" className="text-sm text-muted hover:text-charcoal transition">
               Diferencias
             </a>
-            <a href="#demo" className="text-sm text-muted hover:text-charcoal transition">
+            <a href="#contacto" className="text-sm text-muted hover:text-charcoal transition">
               Contacto
             </a>
 
-            <SecondaryButton href="#demo">
+            <SecondaryButton href="#contacto">
               Solicitar acceso
             </SecondaryButton>
           </div>
 
-          <SecondaryButton href="#demo" className="md:hidden">
+          <SecondaryButton href="#contacto" className="md:hidden">
             Acceso
           </SecondaryButton>
         </nav>
@@ -96,7 +96,7 @@ export default function Home() {
           <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
-          {/* 🔑 IMPORTANTE: contenido por encima del glow */}
+          {/* contenido por encima */}
           <div className="relative z-10">
             <p className="inline-flex w-fit items-center rounded-full border border-charcoal/10 bg-white/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-charcoal">
               Asistente premium para negocios con clientes reales
@@ -108,21 +108,26 @@ export default function Home() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-base md:text-lg text-muted leading-relaxed">
-              Atiende, entiende y organiza citas con un trato natural y profesional.
-              Ventas suaves solo cuando hay interés real. Sin presión. Sin ruido.
+              No es “un chatbot más”. MyClarix entiende intención, guía al cliente con naturalidad y
+              deja todo preparado para que tú solo cierres lo importante.
+            </p>
+
+            <p className="mt-3 max-w-2xl text-base md:text-lg text-muted leading-relaxed">
+              Si hoy pierdes oportunidades por mensajes sin responder, citas confusas o falta de seguimiento,
+              aquí hay una forma elegante de recuperar el control.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <PrimaryButton href="#demo">Solicitar acceso</PrimaryButton>
+              <PrimaryButton href="#contacto">Solicitar acceso</PrimaryButton>
               <SecondaryButton href="#producto">Ver cómo funciona</SecondaryButton>
             </div>
 
             {/* micro-métricas */}
             <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
               {[
-                ["24/7", "Atención continua"],
-                ["Citas", "Flujo sin errores"],
-                ["Control", "Reglas claras"],
+                ["24/7", "Respuestas consistentes"],
+                ["Citas", "Fecha → motivo → confirmación"],
+                ["Ventas", "Solo cuando hay interés real"],
               ].map(([a, b]) => (
                 <div
                   key={a}
@@ -137,21 +142,101 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section id="demo" className="mx-auto max-w-6xl px-6 py-16">
+      {/* PRODUCTO */}
+      <section id="producto" className="mx-auto max-w-6xl px-6 py-14">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <SectionTitle>Qué hace MyClarix, en la práctica</SectionTitle>
+            <p className="mt-4 text-muted leading-relaxed">
+              MyClarix no solo responde. Detecta intención (información, cita, compra), organiza el flujo y
+              convierte el interés en acción sin que tu negocio pierda el tono humano.
+            </p>
+
+            <div className="mt-6 space-y-3">
+              {[
+                ["Respuestas con intención", "No dispara textos: entiende lo que el cliente quiere y lo guía."],
+                ["Citas sin confusión", "Fecha/hora → pide motivo → confirma. Ordenado, sin errores."],
+                ["Seguimiento elegante", "Retoma conversaciones y empuja el cierre sin parecer agresivo."],
+              ].map(([t, d]) => (
+                <div
+                  key={t}
+                  className="rounded-2xl bg-white/60 border border-charcoal/10 p-5 shadow-sm"
+                >
+                  <div className="text-lg font-semibold text-charcoal">{t}</div>
+                  <div className="mt-1 text-muted leading-relaxed">{d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[28px] bg-pearl/40 border border-charcoal/10 p-8 shadow-sm">
+            <div className="text-sm uppercase tracking-[0.18em] text-muted">
+              Lo que notarás desde el primer día
+            </div>
+
+            <ul className="mt-5 space-y-3 text-charcoal">
+              {[
+                "Menos mensajes perdidos y más respuestas a tiempo",
+                "Más citas confirmadas y menos idas y vueltas",
+                "Más claridad en el proceso comercial",
+                "Más tiempo para ti y tu equipo",
+              ].map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
+                  <span className="leading-relaxed">{t}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-7">
+              <SecondaryButton href="#contacto" className="w-full">
+                Quiero saber si encaja conmigo
+              </SecondaryButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DIFERENCIAS */}
+      <section id="diferencias" className="mx-auto max-w-6xl px-6 py-14">
+        <SectionTitle>Por qué MyClarix se siente premium</SectionTitle>
+
+        <p className="mt-4 text-muted leading-relaxed max-w-3xl">
+          No es solo “IA”. Es un sistema con reglas claras, flujo de citas consistente y un estilo de comunicación
+          que protege la imagen de tu marca.
+        </p>
+
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
+          {[
+            ["Control total", "Sin sorpresas: define qué puede y qué no puede hacer."],
+            ["Ventas suaves", "Activa el modo comercial solo cuando hay intención real."],
+            ["Tono humano", "Respuestas naturales, firmes y claras. Sin parecer robot."],
+          ].map(([title, desc]) => (
+            <div
+              key={title}
+              className="rounded-[24px] bg-white/55 border border-charcoal/10 p-7 shadow-sm hover:shadow-md transition"
+            >
+              <h3 className="text-xl tracking-tight text-charcoal">{title}</h3>
+              <p className="mt-3 text-muted leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACTO / CTA FINAL */}
+      <section id="contacto" className="mx-auto max-w-6xl px-6 py-16">
         <div className="relative overflow-hidden rounded-[28px] bg-accent text-white p-8 md:p-12 shadow-sm">
-          {/* glow */}
           <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/25 blur-3xl" />
 
-          {/* 🔑 CONTENIDO POR ENCIMA (para que botones siempre funcionen) */}
+          {/* contenido por encima */}
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-tight">
-              ¿Quieres ver MyClarix funcionando en tu negocio?
+              ¿Te enseño cómo encaja en tu negocio?
             </h2>
 
             <p className="mt-4 text-white/95 leading-relaxed max-w-2xl">
-              Cuéntanos tu caso y te enseñamos cómo mejorar tu atención, tus citas y tu proceso comercial
-              sin cambiar tu forma de trabajar.
+              Cuéntame qué haces (academia, consultoría, negocio con citas) y te muestro un ejemplo real de flujo:
+              cómo responde, cómo organiza y cómo cierra.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -177,15 +262,11 @@ export default function Home() {
                   focus:outline-none focus:ring-2 focus:ring-white/40
                 "
                 href="#"
-                title="Luego lo conectamos a WhatsApp"
+                title="Canal en preparación"
               >
                 WhatsApp (próximamente)
               </a>
             </div>
-
-            <p className="mt-4 text-xs text-white/90">
-              *Activaremos WhatsApp cuando integremos el canal.
-            </p>
           </div>
         </div>
       </section>
@@ -200,3 +281,4 @@ export default function Home() {
     </main>
   );
 }
+
