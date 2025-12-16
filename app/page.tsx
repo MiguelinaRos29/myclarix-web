@@ -1,5 +1,7 @@
+import React from "react";
+
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl md:text-4xl leading-tight tracking-tight">
+  <h2 className="text-3xl md:text-4xl leading-tight tracking-tight text-charcoal">
     {children}
   </h2>
 );
@@ -8,7 +10,6 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 // BOTONES – REGLA ÚNICA MYCLARIX
 // ===============================
 
-// CTA principal (fondos claros)
 const PrimaryButton = ({
   href = "#demo",
   children,
@@ -31,33 +32,28 @@ const PrimaryButton = ({
   </a>
 );
 
-// Botón secundario (borde)
 const SecondaryButton = ({
   href,
   children,
-  className = "",
 }: {
   href: string;
   children: React.ReactNode;
-  className?: string;
 }) => (
   <a
     href={href}
-    className={`
+    className="
       inline-flex items-center justify-center
       rounded-2xl px-6 py-3 font-semibold
       border border-accent/30 text-accent
       bg-transparent transition
-      hover:bg-accent hover:text-white hover:border-accent
-      focus:outline-none focus:ring-2 focus:ring-accent/35
-      ${className}
-    `}
+      hover:bg-accent hover:text-white
+      focus:outline-none focus:ring-2 focus:ring-accent/40
+    "
   >
     {children}
   </a>
 );
 
-// SOLO para fondos oscuros (CTA final en bg-accent)
 const OnDarkButton = ({
   href,
   children,
@@ -101,18 +97,12 @@ export default function Home() {
               Demo
             </a>
 
-            <SecondaryButton
-              href="#demo"
-              className="px-4 py-2 text-sm border-charcoal/15 text-charcoal hover:border-accent"
-            >
+            <SecondaryButton href="#demo">
               Solicitar demo
             </SecondaryButton>
           </div>
 
-          <SecondaryButton
-            href="#demo"
-            className="md:hidden px-4 py-2 text-sm border-charcoal/15 text-charcoal hover:border-accent"
-          >
+          <SecondaryButton href="#demo" className="md:hidden">
             Demo
           </SecondaryButton>
         </nav>
@@ -120,12 +110,16 @@ export default function Home() {
 
       {/* HERO */}
       <section className="mx-auto max-w-6xl px-6 pb-14 pt-6">
-        <div className="rounded-[28px] bg-white/55 border border-charcoal/10 p-8 md:p-14 shadow-sm">
-          <p className="text-sm uppercase tracking-[0.18em] text-muted">
+        <div className="relative overflow-hidden rounded-[28px] bg-white/60 border border-charcoal/10 p-8 md:p-14 shadow-sm">
+          {/* glow decorativo */}
+          <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+
+          <p className="inline-flex w-fit items-center rounded-full border border-charcoal/10 bg-white/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-charcoal">
             Asistente premium para negocios con clientes reales
           </p>
 
-          <h1 className="mt-4 text-4xl md:text-6xl leading-tight tracking-tight">
+          <h1 className="mt-4 text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-charcoal">
             El asistente inteligente que convierte{" "}
             <span className="text-accent">conversaciones</span> en citas reales
           </h1>
@@ -139,126 +133,42 @@ export default function Home() {
             <PrimaryButton>Solicitar demo personalizada</PrimaryButton>
             <SecondaryButton href="#producto">Ver cómo funciona</SecondaryButton>
           </div>
-        </div>
-      </section>
 
-      {/* PROBLEMA */}
-      <section id="producto" className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div>
-            <SectionTitle>
-              Tus clientes escriben. El problema es lo que pasa después.
-            </SectionTitle>
-            <p className="mt-4 text-muted leading-relaxed">
-              Mensajes fuera de horario, conversaciones que no se cierran y citas mal
-              coordinadas. MyClarix pone orden sin romper la cercanía.
-            </p>
-          </div>
-
-          <div className="rounded-[24px] bg-pearl/40 border border-charcoal/10 p-7 shadow-sm">
-            <ul className="space-y-3 text-charcoal">
-              {[
-                "Mensajes sin responder a tiempo",
-                "Oportunidades que se enfrían",
-                "Citas confusas o mal gestionadas",
-                "Demasiado tiempo en respuestas repetitivas",
-              ].map((t) => (
-                <li key={t} className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-accent" />
-                  <span className="leading-relaxed">{t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* QUÉ HACE */}
-      <section className="mx-auto max-w-6xl px-6 py-14">
-        <SectionTitle>Qué hace MyClarix por tu negocio</SectionTitle>
-
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            ["Conversación natural", "Responde y guía sin sonar robótico."],
-            ["Citas inteligentes", "Detecta fecha/hora, pide motivo y confirma sin errores."],
-            ["Ventas suaves", "Actúa solo cuando hay intención real (curso, asesoría, consultoría)."],
-            ["Imagen premium", "Tu marca se comunica con claridad, incluso cuando no estás."],
-            ["Control total", "Reglas claras: sin cambios peligrosos, sin letra pequeña."],
-            ["Orden y foco", "Más tiempo para ti, más oportunidades reales."],
-          ].map(([title, desc]) => (
-            <div
-              key={title}
-              className="rounded-[24px] bg-white/55 border border-charcoal/10 p-7 shadow-sm
-                         hover:shadow-md transition"
-            >
-              <h3 className="text-xl tracking-tight">{title}</h3>
-              <p className="mt-3 text-muted leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PARA QUIÉN */}
-      <section className="mx-auto max-w-6xl px-6 py-14">
-        <div className="rounded-[28px] bg-pearl/40 border border-charcoal/10 p-8 md:p-12 shadow-sm">
-          <SectionTitle>
-            Diseñado para negocios que cuidan su trato con el cliente
-          </SectionTitle>
-
-          <p className="mt-4 text-muted leading-relaxed max-w-3xl">
-            Ideal para academias, consultores, profesionales independientes y negocios que trabajan con citas.
-            Si hablas con clientes, MyClarix trabaja contigo.
-          </p>
-
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {["Academias", "Consultores", "Profesionales", "Negocios con citas"].map((x) => (
+          {/* micro-métricas */}
+          <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
+            {[
+              ["24/7", "Atención continua"],
+              ["Citas", "Flujo sin errores"],
+              ["Control", "Reglas claras"],
+            ].map(([a, b]) => (
               <div
-                key={x}
-                className="rounded-2xl bg-white/60 border border-charcoal/10 px-4 py-3 text-sm shadow-sm"
+                key={a}
+                className="rounded-2xl border border-charcoal/10 bg-white/60 px-4 py-2"
               >
-                {x}
+                <span className="font-semibold text-charcoal">{a}</span>{" "}
+                <span className="text-muted">{b}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* DIFERENCIADORES */}
-      <section id="diferencias" className="mx-auto max-w-6xl px-6 py-14">
-        <SectionTitle>No es otro asistente más</SectionTitle>
-
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            ["Ventas suaves", "Solo aparece cuando hay interés real. Sin presionar."],
-            ["Control total", "Tú defines qué puede y qué no puede hacer el sistema."],
-            ["Citas sin confusión", "Flujo natural: fecha/hora → motivo → confirmación."],
-          ].map(([title, desc]) => (
-            <div
-              key={title}
-              className="rounded-[24px] bg-white/55 border border-charcoal/10 p-7 shadow-sm
-                         hover:shadow-md transition"
-            >
-              <h3 className="text-xl tracking-tight">{title}</h3>
-              <p className="mt-3 text-muted leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* CTA FINAL */}
       <section id="demo" className="mx-auto max-w-6xl px-6 py-16">
-        <div className="rounded-[28px] bg-accent text-white p-8 md:p-12 shadow-sm">
-          <h2 className="text-3xl md:text-4xl leading-tight tracking-tight text-white">
+        <div className="relative overflow-hidden rounded-[28px] bg-accent text-white p-8 md:p-12 shadow-sm">
+          <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/25 blur-3xl" />
+
+          <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-tight">
             ¿Quieres ver MyClarix funcionando en tu negocio?
           </h2>
 
           <p className="mt-4 text-white/95 leading-relaxed max-w-2xl">
-            Solicita una demo personalizada y descubre cómo mejorar tu atención, tus citas y tu proceso comercial
-            sin cambiar tu forma de trabajar.
+            Solicita una demo personalizada y descubre cómo mejorar tu atención,
+            tus citas y tu proceso comercial sin cambiar tu forma de trabajar.
           </p>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <OnDarkButton href="mailto:demo@myclarix.com?subject=Solicitud%20de%20demo%20MyClarix">
+            <OnDarkButton href="mailto:demo@myclarix.com">
               Solicitar demo por email
             </OnDarkButton>
 
@@ -271,15 +181,10 @@ export default function Home() {
                 focus:outline-none focus:ring-2 focus:ring-white/40
               "
               href="#"
-              title="Luego lo conectamos a WhatsApp"
             >
-              Hablar por WhatsApp (próximamente)
+              WhatsApp (próximamente)
             </a>
           </div>
-
-          <p className="mt-4 text-xs text-white/90">
-            *El botón de WhatsApp lo activamos cuando integremos el canal.
-          </p>
         </div>
       </section>
 
