@@ -57,29 +57,6 @@ const SecondaryButton = ({
   </a>
 );
 
-// (lo dejamos por si lo quieres usar en algún CTA oscuro con texto legible)
-const OnDarkButton = ({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) => (
-  <a
-    href={href}
-    className="
-      inline-flex items-center justify-center
-      rounded-2xl px-6 py-3 font-semibold
-      bg-white text-accent
-      shadow-sm transition
-      hover:bg-white/90
-      focus:outline-none focus:ring-2 focus:ring-white/40
-    "
-  >
-    {children}
-  </a>
-);
-
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -98,16 +75,16 @@ export default function Home() {
               Diferencias
             </a>
             <a href="#demo" className="text-sm text-muted hover:text-charcoal transition">
-              Demo
+              Contacto
             </a>
 
             <SecondaryButton href="#demo">
-              Solicitar demo
+              Solicitar acceso
             </SecondaryButton>
           </div>
 
           <SecondaryButton href="#demo" className="md:hidden">
-            Demo
+            Acceso
           </SecondaryButton>
         </nav>
       </header>
@@ -136,7 +113,7 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <PrimaryButton>Solicitar demo personalizada</PrimaryButton>
+              <PrimaryButton href="#demo">Solicitar acceso</PrimaryButton>
               <SecondaryButton href="#producto">Ver cómo funciona</SecondaryButton>
             </div>
 
@@ -163,44 +140,52 @@ export default function Home() {
       {/* CTA FINAL */}
       <section id="demo" className="mx-auto max-w-6xl px-6 py-16">
         <div className="relative overflow-hidden rounded-[28px] bg-accent text-white p-8 md:p-12 shadow-sm">
+          {/* glow */}
           <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/25 blur-3xl" />
 
-          <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-tight">
-            ¿Quieres ver MyClarix funcionando en tu negocio?
-          </h2>
+          {/* 🔑 CONTENIDO POR ENCIMA (para que botones siempre funcionen) */}
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-semibold leading-tight tracking-tight">
+              ¿Quieres ver MyClarix funcionando en tu negocio?
+            </h2>
 
-          <p className="mt-4 text-white/95 leading-relaxed max-w-2xl">
-            Solicita una demo personalizada y descubre cómo mejorar tu atención,
-            tus citas y tu proceso comercial sin cambiar tu forma de trabajar.
-          </p>
+            <p className="mt-4 text-white/95 leading-relaxed max-w-2xl">
+              Cuéntanos tu caso y te enseñamos cómo mejorar tu atención, tus citas y tu proceso comercial
+              sin cambiar tu forma de trabajar.
+            </p>
 
-          <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            {/* ✅ BOTÓN EMAIL CON CONTRASTE REAL */}
-            <a
-              href="mailto:demo@myclarix.com?subject=Solicitud%20de%20demo%20MyClarix"
-              className="
-                inline-flex items-center justify-center
-                rounded-2xl px-6 py-3 font-semibold
-                bg-charcoal text-white
-                hover:bg-charcoal/90 transition
-                focus:outline-none focus:ring-2 focus:ring-white/40
-              "
-            >
-              Solicitar demo por email
-            </a>
+            <div className="mt-7 flex flex-col sm:flex-row gap-3">
+              <a
+                href="mailto:demo@myclarix.com?subject=Contacto%20MyClarix"
+                className="
+                  inline-flex items-center justify-center
+                  rounded-2xl px-6 py-3 font-semibold
+                  bg-charcoal text-white
+                  hover:bg-charcoal/90 transition
+                  focus:outline-none focus:ring-2 focus:ring-white/40
+                "
+              >
+                Hablar con nosotros
+              </a>
 
-            <a
-              className="
-                inline-flex items-center justify-center
-                rounded-2xl px-6 py-3 font-semibold
-                border border-white/70 text-white
-                hover:bg-white/15 transition
-                focus:outline-none focus:ring-2 focus:ring-white/40
-              "
-              href="#"
-            >
-              WhatsApp (próximamente)
-            </a>
+              <a
+                className="
+                  inline-flex items-center justify-center
+                  rounded-2xl px-6 py-3 font-semibold
+                  border border-white/70 text-white
+                  hover:bg-white/15 transition
+                  focus:outline-none focus:ring-2 focus:ring-white/40
+                "
+                href="#"
+                title="Luego lo conectamos a WhatsApp"
+              >
+                WhatsApp (próximamente)
+              </a>
+            </div>
+
+            <p className="mt-4 text-xs text-white/90">
+              *Activaremos WhatsApp cuando integremos el canal.
+            </p>
           </div>
         </div>
       </section>
