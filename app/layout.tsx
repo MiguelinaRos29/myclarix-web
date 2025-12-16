@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MyClarix — Conversaciones que se convierten en acción",
+  title: "MyClarix — Conversaciones que se convierten en citas",
   description:
-    "Asistente inteligente premium que atiende clientes, organiza conversaciones, gestiona citas y acompaña procesos comerciales sin perder el tono humano.",
+    "Asistente inteligente premium que organiza conversaciones, gestiona citas, atiende clientes y acompaña procesos comerciales sin presión.",
 };
 
 export default function RootLayout({
@@ -32,16 +32,16 @@ export default function RootLayout({
         <Script
           id="gtm-script"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-5JPXJCG5');
-            `,
-          }}
-        />
+        >{`
+          (function(w,d,s,l,i){w[l]=w[l]||[];
+          w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+          var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+          j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+          f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5JPXJCG5');
+        `}</Script>
         {/* End Google Tag Manager */}
       </head>
 
