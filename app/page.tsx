@@ -4,17 +4,61 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-const PrimaryButton = ({ children }: { children: React.ReactNode }) => (
+// ===============================
+// BOTONES – REGLA ÚNICA MYCLARIX
+// ===============================
+
+// CTA principal (fondos claros)
+const PrimaryButton = ({
+  href = "#demo",
+  children,
+}: {
+  href?: string;
+  children: React.ReactNode;
+}) => (
   <a
-    href="#demo"
-    className="inline-flex items-center justify-center rounded-2xl bg-accent px-6 py-3 text-white font-medium
-               shadow-sm transition hover:bg-accentDark focus:outline-none focus:ring-2 focus:ring-accent/40"
+    href={href}
+    className="
+      inline-flex items-center justify-center
+      rounded-2xl px-6 py-3 font-semibold
+      bg-accent text-white
+      shadow-sm transition
+      hover:bg-accentDark
+      focus:outline-none focus:ring-2 focus:ring-accent/40
+    "
   >
     {children}
   </a>
 );
 
-const SubtleButton = ({
+// Botón secundario (borde)
+const SecondaryButton = ({
+  href,
+  children,
+  className = "",
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <a
+    href={href}
+    className={`
+      inline-flex items-center justify-center
+      rounded-2xl px-6 py-3 font-semibold
+      border border-accent/30 text-accent
+      bg-transparent transition
+      hover:bg-accent hover:text-white hover:border-accent
+      focus:outline-none focus:ring-2 focus:ring-accent/35
+      ${className}
+    `}
+  >
+    {children}
+  </a>
+);
+
+// SOLO para fondos oscuros (CTA final en bg-accent)
+const OnDarkButton = ({
   href,
   children,
 }: {
@@ -23,8 +67,14 @@ const SubtleButton = ({
 }) => (
   <a
     href={href}
-    className="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-accent
-               border border-accent/25 bg-transparent hover:bg-accentSoft transition"
+    className="
+      inline-flex items-center justify-center
+      rounded-2xl px-6 py-3 font-semibold
+      bg-white text-accent
+      shadow-sm transition
+      hover:bg-white/90
+      focus:outline-none focus:ring-2 focus:ring-white/40
+    "
   >
     {children}
   </a>
@@ -51,22 +101,20 @@ export default function Home() {
               Demo
             </a>
 
-            <a
+            <SecondaryButton
               href="#demo"
-              className="rounded-2xl border border-charcoal/15 bg-white/40 px-4 py-2 text-sm
-                         hover:bg-white/70 transition"
+              className="px-4 py-2 text-sm border-charcoal/15 text-charcoal hover:border-accent"
             >
               Solicitar demo
-            </a>
+            </SecondaryButton>
           </div>
 
-          <a
+          <SecondaryButton
             href="#demo"
-            className="md:hidden rounded-2xl border border-charcoal/15 bg-white/40 px-4 py-2 text-sm
-                       hover:bg-white/70 transition"
+            className="md:hidden px-4 py-2 text-sm border-charcoal/15 text-charcoal hover:border-accent"
           >
             Demo
-          </a>
+          </SecondaryButton>
         </nav>
       </header>
 
@@ -89,7 +137,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <PrimaryButton>Solicitar demo personalizada</PrimaryButton>
-            <SubtleButton href="#producto">Ver cómo funciona</SubtleButton>
+            <SecondaryButton href="#producto">Ver cómo funciona</SecondaryButton>
           </div>
         </div>
       </section>
@@ -200,27 +248,28 @@ export default function Home() {
       {/* CTA FINAL */}
       <section id="demo" className="mx-auto max-w-6xl px-6 py-16">
         <div className="rounded-[28px] bg-accent text-white p-8 md:p-12 shadow-sm">
-          <h2 className="text-3xl md:text-4xl leading-tight tracking-tight">
+          <h2 className="text-3xl md:text-4xl leading-tight tracking-tight text-white">
             ¿Quieres ver MyClarix funcionando en tu negocio?
           </h2>
 
-          <p className="mt-4 text-white/90 leading-relaxed max-w-2xl">
+          <p className="mt-4 text-white/95 leading-relaxed max-w-2xl">
             Solicita una demo personalizada y descubre cómo mejorar tu atención, tus citas y tu proceso comercial
             sin cambiar tu forma de trabajar.
           </p>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <a
-              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-accent font-medium
-                         transition hover:opacity-90 shadow-sm"
-              href="mailto:demo@myclarix.com?subject=Solicitud%20de%20demo%20MyClarix"
-            >
+            <OnDarkButton href="mailto:demo@myclarix.com?subject=Solicitud%20de%20demo%20MyClarix">
               Solicitar demo por email
-            </a>
+            </OnDarkButton>
 
             <a
-              className="inline-flex items-center justify-center rounded-2xl border border-white/40 px-6 py-3 text-white
-                         hover:bg-white/10 transition"
+              className="
+                inline-flex items-center justify-center
+                rounded-2xl px-6 py-3 font-semibold
+                border border-white/70 text-white
+                hover:bg-white/15 transition
+                focus:outline-none focus:ring-2 focus:ring-white/40
+              "
               href="#"
               title="Luego lo conectamos a WhatsApp"
             >
@@ -228,7 +277,7 @@ export default function Home() {
             </a>
           </div>
 
-          <p className="mt-4 text-xs text-white/80">
+          <p className="mt-4 text-xs text-white/90">
             *El botón de WhatsApp lo activamos cuando integremos el canal.
           </p>
         </div>
