@@ -35,24 +35,28 @@ const PrimaryButton = ({
 const SecondaryButton = ({
   href,
   children,
+  className = "",
 }: {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }) => (
   <a
     href={href}
-    className="
+    className={`
       inline-flex items-center justify-center
       rounded-2xl px-6 py-3 font-semibold
       border border-accent/30 text-accent
       bg-transparent transition
       hover:bg-accent hover:text-white
       focus:outline-none focus:ring-2 focus:ring-accent/40
-    "
+      ${className}
+    `}
   >
     {children}
   </a>
 );
+
 
 const OnDarkButton = ({
   href,
